@@ -90,6 +90,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   x: 0
   y: 1
+  isOccupied: 0
 --- !u!1 &6746812773554044022
 GameObject:
   m_ObjectHideFlags: 0
@@ -180,6 +181,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   x: 1
   y: 2
+  isOccupied: 0
 --- !u!1 &7204264998638970238
 GameObject:
   m_ObjectHideFlags: 0
@@ -191,6 +193,8 @@ GameObject:
   - component: {fileID: 7586011365475027809}
   - component: {fileID: 8177401482182687187}
   - component: {fileID: 1287861051757609157}
+  - component: {fileID: 5278880384863970563}
+  - component: {fileID: 5397975303613991756}
   m_Layer: 5
   m_Name: Block1
   m_TagString: Untagged
@@ -218,8 +222,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 820, y: -880}
-  m_SizeDelta: {x: 372, y: 250}
+  m_AnchoredPosition: {x: 806, y: -814.9}
+  m_SizeDelta: {x: 375, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &8177401482182687187
 MonoBehaviour:
@@ -292,6 +296,35 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 377.58594, y: 253.91025}
   m_EdgeRadius: 0
+--- !u!114 &5278880384863970563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7204264998638970238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: daf143823efc4bc4e9d6d555663bd654, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shape: []
+  anchorPosition: {x: 0, y: 0}
+  imageComponent: {fileID: 0}
+--- !u!114 &5397975303613991756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7204264998638970238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfc22dc29662dfe4ea89054fcb66ff2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  board: {fileID: 0}
+  imageComponent: {fileID: 0}
 --- !u!1 &7567978904413679359
 GameObject:
   m_ObjectHideFlags: 0
@@ -382,6 +415,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   x: 0
   y: 0
+  isOccupied: 0
 --- !u!1 &9198765012904547176
 GameObject:
   m_ObjectHideFlags: 0
@@ -472,3 +506,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   x: 1
   y: 1
+  isOccupied: 0

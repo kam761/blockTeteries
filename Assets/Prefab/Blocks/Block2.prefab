@@ -90,6 +90,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   x: 2
   y: 1
+  isOccupied: 0
 --- !u!1 &3767768275708375716
 GameObject:
   m_ObjectHideFlags: 0
@@ -180,6 +181,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   x: 1
   y: 0
+  isOccupied: 0
 --- !u!1 &5968478859270731963
 GameObject:
   m_ObjectHideFlags: 0
@@ -270,6 +272,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   x: 0
   y: 0
+  isOccupied: 0
 --- !u!1 &6658652065123223346
 GameObject:
   m_ObjectHideFlags: 0
@@ -360,6 +363,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   x: 0
   y: 1
+  isOccupied: 0
 --- !u!1 &6856528147238599685
 GameObject:
   m_ObjectHideFlags: 0
@@ -450,6 +454,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   x: 2
   y: 0
+  isOccupied: 0
 --- !u!1 &7104334459963238382
 GameObject:
   m_ObjectHideFlags: 0
@@ -460,8 +465,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8629046297274636775}
   - component: {fileID: 3255956787240967432}
-  - component: {fileID: 3140230414677217752}
   - component: {fileID: 9049028212602610896}
+  - component: {fileID: 664552255247080908}
+  - component: {fileID: 311092158594492719}
   m_Layer: 5
   m_Name: Block2
   m_TagString: Untagged
@@ -519,19 +525,6 @@ MonoBehaviour:
   - blockPurepleDimond
   - blockRedDimond
   - blockYellowDimond
---- !u!114 &3140230414677217752
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7104334459963238382}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96e78803e36a38d4b89e23d90e3910ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  boardRect: {fileID: 0}
 --- !u!61 &9049028212602610896
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -578,6 +571,35 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 376.6128, y: 251.78555}
   m_EdgeRadius: 0
+--- !u!114 &664552255247080908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7104334459963238382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: daf143823efc4bc4e9d6d555663bd654, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shape: []
+  anchorPosition: {x: 0, y: 0}
+  imageComponent: {fileID: 0}
+--- !u!114 &311092158594492719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7104334459963238382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfc22dc29662dfe4ea89054fcb66ff2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  board: {fileID: 0}
+  imageComponent: {fileID: 0}
 --- !u!1 &8098969188792618182
 GameObject:
   m_ObjectHideFlags: 0
@@ -668,3 +690,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   x: 1
   y: 1
+  isOccupied: 0

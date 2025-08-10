@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1103757536349006087}
   - component: {fileID: 7170633386270839703}
-  - component: {fileID: 1867865599145949584}
   - component: {fileID: 5734667336655201665}
+  - component: {fileID: 7290395728190532409}
+  - component: {fileID: 7409802675356786364}
   m_Layer: 5
   m_Name: Block16
   m_TagString: Untagged
@@ -39,7 +40,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -920, y: -2375}
-  m_SizeDelta: {x: 125, y: 375}
+  m_SizeDelta: {x: 375, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7170633386270839703
 MonoBehaviour:
@@ -66,19 +67,6 @@ MonoBehaviour:
   - blockPurepleDimond
   - blockRedDimond
   - blockYellowDimond
---- !u!114 &1867865599145949584
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 577497375291356375}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96e78803e36a38d4b89e23d90e3910ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  boardRect: {fileID: 0}
 --- !u!61 &5734667336655201665
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -125,6 +113,35 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 125.63088, y: 376.4702}
   m_EdgeRadius: 0
+--- !u!114 &7290395728190532409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 577497375291356375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: daf143823efc4bc4e9d6d555663bd654, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shape: []
+  anchorPosition: {x: 0, y: 0}
+  imageComponent: {fileID: 0}
+--- !u!114 &7409802675356786364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 577497375291356375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfc22dc29662dfe4ea89054fcb66ff2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  board: {fileID: 0}
+  imageComponent: {fileID: 0}
 --- !u!1 &1443350310287574354
 GameObject:
   m_ObjectHideFlags: 0
@@ -215,6 +232,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   x: 0
   y: 0
+  isOccupied: 0
 --- !u!1 &3881696107216458987
 GameObject:
   m_ObjectHideFlags: 0
@@ -305,6 +323,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   x: 0
   y: 2
+  isOccupied: 0
 --- !u!1 &8894608838108550126
 GameObject:
   m_ObjectHideFlags: 0
@@ -395,3 +414,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   x: 0
   y: 1
+  isOccupied: 0
