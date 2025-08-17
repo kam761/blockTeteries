@@ -20,6 +20,7 @@ namespace LayerLab.GUIScripts
         [SerializeField] private Transform panelTransformOther;
         [SerializeField] private Button buttonPrev;
         [SerializeField] private Button buttonNext;
+        public GameObject gameOverPanel;
 
         private bool IsOtherMode { get; set; }
 
@@ -173,6 +174,28 @@ namespace LayerLab.GUIScripts
         {
             panelTransformDefault.gameObject.SetActive(!IsOtherMode);
             if(otherPanels.Count > 0) panelTransformOther.gameObject.SetActive(IsOtherMode);
+        }
+
+        public void ShowPanel(GameObject panel)
+        {
+            if (panel != null)
+            {
+                panel.SetActive(true);
+            }
+        }
+
+        public void HidePanel(GameObject panel)
+        {
+            if (panel != null)
+            {
+                panel.SetActive(false);
+            }
+        }
+
+        // 게임 오버 패널을 활성화하는 새로운 메서드 추가
+        public void GameOver()
+        {
+            ShowPanel(gameOverPanel);
         }
     }
 }

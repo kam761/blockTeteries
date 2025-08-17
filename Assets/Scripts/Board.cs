@@ -196,4 +196,34 @@ public class Board : MonoBehaviour
         score += points;
         scoreText.text = score.ToString();
     }
+
+
+    public bool CanAnyBlockBePlaced(List<PuzzleBlock> activeBlocks)
+    {
+        // 보드의 모든 슬롯을 순회합니다.
+        for (int y = 0; y < BoardHeight; y++)
+        {
+            for (int x = 0; x < BoardWidth; x++)
+            {
+                // **수정된 부분: grid[x, y].isOccupied 사용**
+                // 빈 슬롯(isOccupied가 false)을 찾습니다.
+                if (!grid[x, y].isOccupied)
+                {
+                    // 활성화된 각 퍼즐 블록을 순회합니다.
+                    foreach (PuzzleBlock block in activeBlocks)
+                    {
+                        // 현재 보드의 빈 슬롯 위치를 기준으로 블록을 놓을 수 있는지 확인합니다.
+                        if (CanPlace(block, new Vector2Int(x, y)))
+                        {
+                            // 하나라도 배치 가능한 블록이 있다면 true를 반환하고 탐색을 종료합니다.
+                            return true;
+                        }
+                    }
+                }
+            }
+        }
+
+        // 보드의 모든 위치에서 어떤 블록도 배치할 수 없는 경우 false를 반환합니다.
+        return false;
+    }
 }

@@ -8,6 +8,7 @@ public class PuzzleBlockManager : MonoBehaviour
     public Transform position2;
     public Transform position3;
     public Board board;
+    public GameObject gameOverPanel; // 유니티에서 할당할 게임 오버 패널
 
     private List<PuzzleBlock> currentBlocks = new List<PuzzleBlock>();
 
@@ -29,15 +30,34 @@ public class PuzzleBlockManager : MonoBehaviour
         // 배치된 블록을 리스트에서 제거
         currentBlocks.Remove(placedBlock);
 
-        // 만약 모든 블록이 다 배치되었으면 (리스트가 비었으면) 새로운 3개의 블록을 생성
-        if (currentBlocks.Count == 0)
+        // 만약 모든 블록이 다 배치되었으면 (리스트가 비었으면)
+        // 새로운 블록을 생성하기 전에 게임 오버를 확인
+        if (!board.CanAnyBlockBePlaced(GetActiveBlocks()))
         {
+            // 배치 가능한 블록이 없는 경우, 게임 오버 패널 활성화
+            gameOverPanel.SetActive(true);
+            // 게임 일시 정지 (선택 사항)
+            Time.timeScale = 0;
+        }
+        else
+        {
+            // 게임 오버가 아니면 새로운 블록을 생성
             GenerateNewBlocks(3);
         }
-        else // 그렇지 않으면 배치된 블록을 대체할 새로운 블록 1개만 생성
+    }
+
+    // 현재 활성화된 PuzzleBlock들을 리스트로 반환하는 메서드 추가
+    private List<PuzzleBlock> GetActiveBlocks()
+    {
+        List<PuzzleBlock> activeBlocks = new List<PuzzleBlock>();
+        foreach (PuzzleBlock block in currentBlocks)
         {
-            GenerateNewBlocks(1);
+            if (block.gameObject.activeSelf)
+            {
+                activeBlocks.Add(block);
+            }
         }
+        return activeBlocks;
     }
 
     private void GenerateNewBlocks(int count)

@@ -59,21 +59,21 @@ public class DragDropHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         );
         rectTransform.localPosition = localPoint;
 
-        // **수정된 부분:**
-        // 보드에 미리보기를 표시하는 로직을 추가합니다.
-        if (board != null && puzzleBlock != null)
+        // **새로 추가된 부분:**
+        // 마우스의 위치를 기반으로 보드 위에서 블록이 놓일 수 있는 가장 가까운 앵커 위치를 계산합니다.
+        Vector2Int nearestAnchor = GetNearestSlotPosition();
+
+        // 이 앵커 위치를 기준으로 블록의 모든 슬롯 위치를 확인하여
+        // 보드 위에서 블록을 놓을 수 있는지 확인합니다.
+        if (board.CanPlace(puzzleBlock, nearestAnchor))
         {
-            Vector2Int anchorPosition = GetNearestSlotPosition();
-            if (board.CanPlace(puzzleBlock, anchorPosition))
-            {
-                // 블록을 놓을 수 있는 경우, 보드에 미리보기를 표시하도록 요청합니다.
-                board.ShowPreview(puzzleBlock, anchorPosition);
-            }
-            else
-            {
-                // 블록을 놓을 수 없는 경우, 미리보기를 지웁니다.
-                board.ClearPreview();
-            }
+            // 블록을 놓을 수 있는 경우, 보드에 미리보기를 표시하도록 요청합니다.
+            board.ShowPreview(puzzleBlock, nearestAnchor);
+        }
+        else
+        {
+            // 블록을 놓을 수 없는 경우, 미리보기를 지웁니다.
+            board.ClearPreview();
         }
     }
 
@@ -148,11 +148,12 @@ public class DragDropHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         }
     }
 
-    // 마우스 위치에 가장 가까운 슬롯의 그리드 좌표를 계산합니다.
+    // 마우스 위치에 가장 가까운 슬롯의 그리드 좌표를 계산합니다..
     private Vector2Int GetNearestSlotPosition()
     {
         Vector2 mousePosition = Input.mousePosition;
 
+        // 마우스의 스크린 좌표를 보드의 로컬 좌표로 변환합니다.
         Vector2 localBoardPosition;
         RectTransformUtility.ScreenPointToLocalPointInRectangle(
             board.GetComponent<RectTransform>(),
@@ -166,6 +167,7 @@ public class DragDropHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         int x = Mathf.RoundToInt(localBoardPosition.x / board.SlotSize + (board.BoardWidth - 1) * 0.5f);
         int y = Mathf.RoundToInt(localBoardPosition.y / board.SlotSize + (board.BoardHeight - 1) * 0.5f);
 
+        // 계산된 그리드 좌표가 보드 범위를 벗어나지 않도록 클램프(Clamp)합니다.
         x = Mathf.Clamp(x, 0, board.BoardWidth - 1);
         y = Mathf.Clamp(y, 0, board.BoardHeight - 1);
 

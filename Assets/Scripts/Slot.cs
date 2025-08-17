@@ -10,7 +10,8 @@ public class Slot : MonoBehaviour
     public int Y => y;
     // 내가 현재 점령당한 상태인지 => 블록이 배치된 상태인지
     public bool isOccupied;
-
+    // 또는 public 프로퍼티를 추가
+    public bool IsEmpty => !isOccupied;
     // Image 컴포넌트를 참조할 변수를 추가합니다.
     private Image slotImage;
 
